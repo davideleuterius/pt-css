@@ -1,0 +1,91 @@
+@color-light-grey-1: #f9f9f9;
+@color-light-grey-2: #f5f5f5;
+@color-light-grey-3: #f3f3f3;
+@color-light-grey-4: #f1f1f1;
+@color-light-grey-5: #e6e6e6;
+@color-light-grey-6: #e3e3e3;
+
+@colors: {
+  white: #fff;
+  black: #111;
+}
+
+// ELECTRICITY RATES COLORS
+@er-colors: {
+  orange: #DE6026;
+  blue: #0C3455;
+  copy: #444;
+  grey: #707070;
+  gray: #707070;
+  mp-popular: #57B9CD;
+  mp-green: #4CA830;
+  mp-smart-home: #D06731;
+  mp-long-term: #366EB3;
+}
+
+// CONSTELLATION COLORS
+@con-colors: {
+  blue: #2372b9;
+  blue-light: #4870AF;
+  blue-dark: #1f5b9e;
+  orange: #f15623;
+  green: #83AB5C;
+  green-dark: #79a355;
+  yellow: #EFCA5D;
+}
+
+// COMPARE ELECTRICITY // WILL BE FOUND HERE
+
+
+// BUILD A SERIES OF SHADES / TINTS BASED ON
+// - COLOR
+// - CLASS NAME
+// - SCALE (DISTANCE BETWEEN COLORS)
+// - STEPS (AMOUNT OF SHADES / TINTS)
+// - DARKEN OR LIGHTEN
+
+.color-steps(@color, @name, @scale, @steps, @type, @index: 1) when (@index =< @steps) {
+  & when (@type ='lighten') {
+    .color-@{name}-@{index} {
+      color: lighten(@color, (@index * @scale), relative);
+    }
+    .bg-@{name}-@{index} {
+      background-color: lighten(@color, (@index * @scale), relative);
+    }
+  }
+
+  & when (@type ='darken') {
+    .color-@{name}-@{index} {
+      color: darken(@color, (@index * @scale), relative);
+    }
+    .bg-@{name}-@{index} {
+      background-color: darken(@color, (@index * @scale), relative);
+    }
+  }
+
+  .color-steps(@color, @name, @scale, @steps, @type, (@index + 1));
+}
+
+// LEGACY
+// COLORS
+// @color-white: #fff;
+// @color-black: #111;
+// @color-orange: #DE6026;
+// @color-blue: #0C3455;
+// @color-copy: #444;
+// @color-top-pick: #57B9CD;
+// @color-grey: #707070;
+// @color-gray: @color-grey;
+// @color-grey--mid: #666;
+// @color-gray--mid: @color-grey--mid;
+// @color-grey--alt: lighten(@color-grey, 50%);
+// @color-white-smoke: #F3F3F3;
+// @color-light-charcoal: #e6e6e6;
+// @color-grey--alt: #747474;
+// @color-gray--alt: @color-grey--alt;
+// @color-grey--lt: #F1F1F1;
+// @color-gray--lt: @color-grey--lt;
+// @color-white-smoke--lt: #f5f5f5;
+// @color-gainsboro: #E3E3E3;
+// @color-steam: #F9F9F9;
+// @color-white--alt: @color-steam;
